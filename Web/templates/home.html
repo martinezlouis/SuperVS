@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Material Design for Bootstrap</title>
+    <!-- Link to the static CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav id="menu">
+            <input type="checkbox" id="responsive-menu" onclick="updatemenu()"><label></label>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="Htitle">
+            <h1 class="title">SuperVS</h1>
+        </div>
+    </header>
+
+    <!-- Search Form -->
+    <div class="search-form">
+        <form method="POST" action="/">
+            <input type="text" name="hero_name" placeholder="Enter hero name" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="cards">
+        <div class="info">
+            <div class="col" id="left-column">
+                {% for card in cards %}
+                    <div class="card carded container">
+                        <div class="card-body cta">
+                            <img src="{{ char_url }}" class="card-img-top" alt="">
+                            <div class="text">
+                                <h2 class="card-title">{{ card.title }}</h2>
+                                <p class="card-text">{{ card.text }}</p>
+                                <a href="#!" class="btn">Button</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-6" id="right-column">
+                <!-- Add more cards if needed -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

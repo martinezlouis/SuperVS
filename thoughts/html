@@ -1,0 +1,42 @@
+dynamic selection
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superhero Stats</title>
+</head>
+<body>
+    <h1>Superhero Stats</h1>
+    <form method="POST">
+        <label for="alias">Enter Superhero Alias:</label>
+        <input type="text" id="alias" name="alias" required>
+        <button type="submit">Generate Stats</button>
+    </form>
+    {% if chart_url %}
+    <h2>Stats for {{ alias }}</h2>
+    <img src="{{ chart_url }}" alt="Polar Bar Chart">
+    {% endif %}
+</body>
+</html>
+
+
+from flask import Flask, render_template, request
+from graph_stats import graph_stats
+
+app = Flask(__name__)
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    if request.method == "POST":
+        alias = request.form.get("alias")  # Get superhero name from the form
+        chart_path = graph_stats("SuperVs", alias)
+        return render_template("index.html", chart_url=chart_path, alias=alias)
+    return render_template("index.html", chart_url=None)
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
