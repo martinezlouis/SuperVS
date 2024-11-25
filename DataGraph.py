@@ -80,7 +80,7 @@ def graph_stats(table_name, alias):
 	#If radii contains only zero values, max(radii) will be zero, and dividing by zero will cause issues,
 
 		# save the chart as an image
-	img_path = f"Web/static{alias}_chart.png"
+	img_path = f"static/{alias}_chart.png"
 	plt.savefig(img_path)
 
 	plt.close()

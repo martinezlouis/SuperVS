@@ -1,5 +1,5 @@
 import pyodbc
-from Web.HomePage import app
+from HomePage import app
 
 db_file = r"C:\Users\louis\OneDrive - Year Up- BOS\YearUp\Mod 2\Capstone\Super\SuperVS.accdb"
 connection = (r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
