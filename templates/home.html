@@ -1,54 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
     <title>SuperVS</title>
     <!-- Link to the static CSS file -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav id="menu">
-            <input type="checkbox" id="responsive-menu" onclick="updatemenu()"><label></label>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </nav>
-        <div class="Htitle">
-            <h1 class="title">SuperVS</h1>
-        </div>
-    </header>
-
-    <!-- Search Form -->
-    <div class="search-form">
-        <form method="POST">
-            <input type="text" name="hero1_name" placeholder="Enter First Hero Name" required>
-            <input type="text" name="hero2_name" placeholder="Enter Second Hero Name" required>
-            <button type="submit">Search</button>
-        </form>
+<header>
+    <nav id="menu">
+        <input id="responsive-menu" onclick="updatemenu()" type="checkbox"><label></label>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div class="Htitle">
+        <h1 class="title">SuperVS</h1>
     </div>
+</header>
 
-    <!-- Cards Section -->
-    <div class="cards">
-        {% for card in cards %}
-        <div class="card carded container">
-            <div class="card-body cta">
-                <img src="{{ url_for('static', filename=chart_urls[loop.index0]) }}" class="card-img-top" alt="Chart for {{ card.title }}">
-                <div class="text">
-                    <h2 class="card-title">{{ card.title }}</h2>
-                    <p class="card-text">{{ card.text }}</p>
-                    <ul>
-                        {% for attribute, values in card.attributes %}
-                        <li>{{ attribute }}: {{ values | sum }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
+<!-- Search Form -->
+<div class="search-form">
+    <form method="POST">
+        <input name="hero1_name" placeholder="Enter First Hero Name" required type="text">
+        <input name="hero2_name" placeholder="Enter Second Hero Name" required type="text">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<!-- Cards Section -->
+<div class="cards">
+    {% for card in cards %}
+    <div class="card carded container">
+        <div class="card-body cta">
+            <img alt="Chart for {{ card.title }}" class="card-img-top"
+                 src="{{ url_for('static', filename=chart_urls[loop.index0]) }}">
+            <div class="text">
+                <h2 class="card-title">{{ card.title }}</h2>
+                <p class="card-text">{{ card.text }}</p>
+                <ul>
+                    {% for attribute, values in card.attributes %}
+                    <li>{{ attribute }}: {{ values | sum }}</li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
+</div>
 </body>
 </html>

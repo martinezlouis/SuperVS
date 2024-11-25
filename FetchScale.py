@@ -7,12 +7,12 @@ connection = (r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
 conn = pyodbc.connect(connection)
 cursor = conn.cursor()
 
+
 class FetchData:
 	def __init__(self, table_name, column_name, search_value):
 		self.table_name = table_name
 		self.column_name = column_name
 		self.search_value = search_value
-
 
 	"""
 	    Searches for rows in the given table where column_name 
@@ -23,6 +23,7 @@ class FetchData:
 	  	search_value: Value to search for (supports wildcards for LIKE queries)
 	    List of rows matching the criteria
 	   """
+
 	def src_data(self):
 		try:
 			query = (f"SELECT * FROM {self.table_name} WHERE "
@@ -53,7 +54,7 @@ class FetchData:
 		try:
 			for attribute in attributes:
 				query = (f"SELECT {attribute} FROM {self.table_name} "
-					 f"WHERE {self.column_name} = ?")
+						 f"WHERE {self.column_name} = ?")
 
 				cursor.execute(query, (f'{self.search_value}',))
 
@@ -78,5 +79,3 @@ class FetchData:
 		except Exception as e:
 			print("An error occurred: ", e)
 			return None
-
-

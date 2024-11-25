@@ -1,12 +1,10 @@
-import FetchScale
 from FetchScale import FetchData
 
 
 class WeightedPower():
 	def weighted_combat(self, table_name, alias):
 		prowess = {"Intelligence": .25, "Strength": .10, "Speed": .10,
-					  "Durability": .15, "Powered": .25, "Combat": .15}
-
+				   "Durability": .15, "Powered": .25, "Combat": .15}
 
 		attrib = FetchData(table_name, "Alias", alias)
 		attrib.src_data()
@@ -15,7 +13,6 @@ class WeightedPower():
 		if arr_attrib is None:
 			print("Attributes not fetched properly")
 			return None
-
 
 		"""
 		takes the values of prowess in the first loop
@@ -32,11 +29,6 @@ class WeightedPower():
 		print(f"Weighted Combat Score: {weighted_prowess}")
 		return weighted_prowess
 
-
 	def versus(self):
 		hero1 = WeightedPower()
 		hero2 = WeightedPower()
-
-
-
-

@@ -1,13 +1,13 @@
 import matplotlib
+
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 from FetchScale import FetchData
 
-def graph_stats(table_name, alias):
 
+def graph_stats(table_name, alias):
 	"""
 	theta:::
 
@@ -46,17 +46,16 @@ def graph_stats(table_name, alias):
 	Uses the viridis colormap to assign colors based on radii.
 	Each bar's color intensity corresponds to its height (radii / 10 normalizes the values).
 	"""
-	stats = FetchData(table_name, "Alias", alias )
-
+	stats = FetchData(table_name, "Alias", alias)
 
 	attributes = ["Intelligence", "Strength", "Speed",
-					  "Durability", "Powered", "Combat"]
+				  "Durability", "Powered", "Combat"]
 	N = len(attributes)
 
-	#angle for bars
+	# angle for bars
 	theta = np.linspace(0.0, 2 * np.pi, N, endpoint=False)
 
-	#fetch data
+	# fetch data
 	stats_data = stats.src_attrib()
 	radii = [sum(values) for attr, values in stats_data]
 	print(stats_data)
@@ -74,18 +73,14 @@ def graph_stats(table_name, alias):
 	ax.set_xticks(theta)
 	ax.set_xticklabels(attributes)
 
+	# colors
+	# The calculation for the colors is based on normalizing the radii array with max(radii).
+	# If radii contains only zero values, max(radii) will be zero, and dividing by zero will cause
+	# issues,
 
-	#colors
-	#The calculation for the colors is based on normalizing the radii array with max(radii).
-	#If radii contains only zero values, max(radii) will be zero, and dividing by zero will cause issues,
-
-		# save the chart as an image
-	img_path = f"static/{alias}_chart.png"
+	# save the chart as an image
+	img_path = f"{alias}_chart.png"
 	plt.savefig(img_path)
 
 	plt.close()
 	return img_path
-
-
-
-
