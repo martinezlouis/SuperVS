@@ -27,19 +27,20 @@ class FetchData:
 		try:
 			query = (f"SELECT * FROM {self.table_name} WHERE "
 					 f"{self.column_name} LIKE ?")
-			self.search_value = input("hero: ")
 			cursor.execute(query, (f'{self.search_value}',))
 
 			rows = cursor.fetchall()
+			return rows
 
+			"""
 			if rows:
 				print(f"Found {len(rows)} matching rows:")
 				for row in rows:
 					print(row)
 			else:
 				print("No matching rows found")
+			"""
 
-			return rows
 		except Exception as e:
 			print("An error occurred: ", e)
 			return None
@@ -77,7 +78,5 @@ class FetchData:
 		except Exception as e:
 			print("An error occurred: ", e)
 			return None
-trial = FetchData("SuperVs", "Alias", "Flash")
-print(trial.src_data())
 
 

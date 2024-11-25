@@ -16,32 +16,32 @@ def graph_stats(table_name, alias):
 	Example: If N=4, theta could be [0, π/2, π, 3π/2].
 
 	radii:::
-	
+
 	Generates N random values scaled by 10.
 	Represents the height (length) of each bar.
-	
+
 	width:
  	Generates N random values scaled by π / 4
 	Represents the angular width of each bar.
-	
+
 	colors:::
-	
+
 	Uses the viridis colormap to assign colors based on radii.
 	Each bar's color intensity corresponds to its height (radii / 10 normalizes the values).theta:
 
 	Generates N angles evenly spaced between 0 and 2π (full circle).
 	Represents the angular positions of the bars in the polar chart.
 	Example: If N=4, theta could be [0, π/2, π, 3π/2].
-	
+
 	radii:
 	Generates N random values scaled by 10.
 	Represents the height (length) of each bar.
-	
+
 	width:
 
 	Generates N random values scaled by π/4.
 	Represents the angular width of each bar.
-	
+
 	colors:
 	Uses the viridis colormap to assign colors based on radii.
 	Each bar's color intensity corresponds to its height (radii / 10 normalizes the values).
@@ -80,7 +80,7 @@ def graph_stats(table_name, alias):
 	#If radii contains only zero values, max(radii) will be zero, and dividing by zero will cause issues,
 
 		# save the chart as an image
-	img_path = "Web/static/chart.png"
+	img_path = f"Web/static{alias}_chart.png"
 	plt.savefig(img_path)
 
 	plt.close()

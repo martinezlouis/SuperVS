@@ -1,7 +1,5 @@
 import pyodbc
-from FetchScale import FetchData
 from Web.HomePage import app
-from WeightedScale import WeightedPower
 
 db_file = r"C:\Users\louis\OneDrive - Year Up- BOS\YearUp\Mod 2\Capstone\Super\SuperVS.accdb"
 connection = (r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
