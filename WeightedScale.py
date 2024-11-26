@@ -1,3 +1,10 @@
+import pandas as pd
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+import joblib
+from sklearn.preprocessing import StandardScaler
+
 from FetchScale import FetchData
 
 
@@ -32,3 +39,36 @@ class WeightedPower():
 	def versus(self):
 		hero1 = WeightedPower()
 		hero2 = WeightedPower()
+
+
+	def stat_prediction(self):
+		df = pd.read_csv("models/training.csv")
+
+		# Features and target
+		X = df[["Intelligence", "Strength", "Speed", "Durability", "Power", "Combat"]]
+		y = df["Winner"].map({"Win": 1, "Lose": 0})  # Map target to binary values
+
+		# Train-test split
+		X_train, X_test, y_train, y_test = train_test_split(
+			X, y, test_size=0.2, random_state=42, stratify=y
+		)
+
+		# Scale features
+		scaler = StandardScaler()
+		X_train = scaler.fit_transform(X_train)
+		X_test = scaler.transform(X_test)
+
+		# Train the model
+		model = RandomForestClassifier(random_state=42, class_weight="balanced")
+		model.fit(X_train, y_train)
+
+		# Evaluate
+		y_pred = model.predict(X_test)
+		accuracy = accuracy_score(y_test, y_pred)
+		print("Model Accuracy:", accuracy)
+		print("X shape:", X.shape)
+		print("y length:", len(y))
+
+
+hero = WeightedPower()
+print(hero.stat_prediction())

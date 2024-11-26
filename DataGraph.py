@@ -84,3 +84,5 @@ def graph_stats(table_name, alias):
 
 	plt.close()
 	return img_path
+
+

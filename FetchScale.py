@@ -79,3 +79,51 @@ class FetchData:
 		except Exception as e:
 			print("An error occurred: ", e)
 			return None
+
+	def load_img(self):
+		"""
+		Retrieves the image URL from the table at index 9 (assuming the image URL is stored there).
+
+		Returns:
+			The image URL as a string, or None if not found.
+		"""
+		try:
+			# Query to fetch the column at index 9
+			query = (f"SELECT * FROM {self.table_name} WHERE {self.column_name} = ?")
+			cursor.execute(query, (f'{self.search_value}',))
+
+			# Fetch the row
+			row = cursor.fetchone()
+
+			if row:
+				# Assuming index 9 contains the URL
+				img_url = row[9]
+				return img_url
+			else:
+				print("No matching row found.")
+				return None
+		except Exception as e:
+			print("An error occurred while loading the image URL: ", e)
+			return None
+
+	def fetch_random_hero(self):
+		"""Fetch a random hero from the table."""
+		try:
+			query = f"SELECT TOP 1 * FROM {self.table_name} ORDER BY NEWID()"
+			cursor.execute(query)
+			row = cursor.fetchone()
+			if row:
+				return {
+					"name": row[1],  # Assuming the name is in the second column
+					"Intelligence": row[2],
+					"Strength": row[3],
+					"Speed": row[4],
+					"Durability": row[5],
+					"Power": row[6],
+					"Combat": row[7]
+				}
+			else:
+				return None
+		except Exception as e:
+			print(f"Error fetching random hero: {e}")
+			return None

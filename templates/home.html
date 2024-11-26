@@ -11,10 +11,10 @@
 <header>
     <nav id="menu">
         <input id="responsive-menu" onclick="updatemenu()" type="checkbox"><label></label>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact Us</a></li>
+           <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('battle_simulator') }}">Fight</a></li>
+            <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
         </ul>
     </nav>
     <div class="Htitle">
@@ -36,8 +36,12 @@
     {% for card in cards %}
     <div class="card carded container">
         <div class="card-body cta">
-            <img alt="Chart for {{ card.title }}" class="card-img-top"
-                 src="{{ url_for('static', filename=chart_urls[loop.index0]) }}">
+            <!-- Display the image -->
+            {% if card.image %}
+            <img alt="{{ card.title }}" class="card-img-top" src="{{ card.image }}">
+            {% else %}
+            <p>No image available for {{ card.title }}</p>
+            {% endif %}
             <div class="text">
                 <h2 class="card-title">{{ card.title }}</h2>
                 <p class="card-text">{{ card.text }}</p>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Battle</title>
+</head>
+<body>
+<header>
+    <nav id="menu">
+        <input id="responsive-menu" onclick="updatemenu()" type="checkbox"><label></label>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('battle_simulator') }}">Fight</a></li>
+            <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+        </ul>
+
+    </nav>
+    <div class="Htitle">
+        <h1 class="title">SuperVS</h1>
+    </div>
+</header>
+    <h3>Hero Battle Simulator</h3>
+
+    <!-- Show Form if No Battle Result -->
+    {% if not user_hero %}
+    <form method="POST">
+        <label for="name">Hero Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="intelligence">Intelligence (1-100):</label>
+        <input type="number" id="intelligence" name="intelligence" min="1" max="100" required><br>
+
+        <label for="strength">Strength (1-100):</label>
+        <input type="number" id="strength" name="strength" min="1" max="100" required><br>
+
+        <label for="speed">Speed (1-100):</label>
+        <input type="number" id="speed" name="speed" min="1" max="100" required><br>
+
+        <label for="durability">Durability (1-100):</label>
+        <input type="number" id="durability" name="durability" min="1" max="100" required><br>
+
+        <label for="power">Power (1-100):</label>
+        <input type="number" id="power" name="power" min="1" max="100" required><br>
+
+        <label for="combat">Combat (1-100):</label>
+        <input type="number" id="combat" name="combat" min="1" max="100" required><br>
+
+        <button type="submit">Submit</button>
+    </form>
+    {% endif %}
+
+    <!-- Show Battle Results if Data is Available -->
+    {% if user_hero %}
+    <div>
+        <h2>Battle Results</h2>
+        <h3>Your Hero: {{ user_hero.name }}</h3>
+        <ul>
+            <li>Intelligence: {{ user_hero.Intelligence }}</li>
+            <li>Strength: {{ user_hero.Strength }}</li>
+            <li>Speed: {{ user_hero.Speed }}</li>
+            <li>Durability: {{ user_hero.Durability }}</li>
+            <li>Power: {{ user_hero.Power }}</li>
+            <li>Combat: {{ user_hero.Combat }}</li>
+        </ul>
+
+        <h3>Opponent: {{ opponent.name }}</h3>
+        <ul>
+            <li>Intelligence: {{ opponent.Intelligence }}</li>
+            <li>Strength: {{ opponent.Strength }}</li>
+            <li>Speed: {{ opponent.Speed }}</li>
+            <li>Durability: {{ opponent.Durability }}</li>
+            <li>Power: {{ opponent.Power }}</li>
+            <li>Combat: {{ opponent.Combat }}</li>
+        </ul>
+
+        <h2>Winner: {{ winner }}</h2>
+        <p>{{ probability }}</p>
+        <a href="/">Battle Again</a>
+    </div>
+    {% endif %}
+</body>
+</html>
