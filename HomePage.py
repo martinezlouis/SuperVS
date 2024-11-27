@@ -47,7 +47,7 @@ def home_page():
 	return render_template("home.html", chart_urls=chart_paths, cards=cards)
 
 
-battle_simulator = BattleSimulator("superhero_model.pkl")
+battle_simulator = BattleSimulator("models/superhero_model.pkl")
 
 @app.route("/fight", methods=["GET", "POST"])
 def battle_simulator_route():
@@ -79,5 +79,5 @@ def battle_simulator_route():
         )
 
     # Render the form by default
-    return render_template("hero_battle.html", user_hero=None)
+    return render_template("templates/fight.html", user_hero=None)
 
