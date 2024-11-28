@@ -1,0 +1,277 @@
+/* General Body Styling */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* Header Section */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 20px;
+    background-color: #0099CC;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Htitle {
+    font-size: 2.5em;
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Navigation Menu */
+#menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#menu li {
+    margin-right: 15px;
+}
+
+#menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+#menu a:hover {
+    background-color: #005f73;
+}
+
+/* Search Form Section */
+.search-form {
+    width: 100%; /* Full-width container */
+    text-align: center; /* Center align content */
+    margin-bottom: 20px; /* Add space below the search form */
+    padding: 20px; /* Add padding for visual separation */
+    background-color: #ffffff; /* Light background for contrast */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Inputs inside the search form */
+.search-form input {
+    width: 40%; /* Set input width */
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc; /* Border styling */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px;
+}
+
+.search-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Cards Section */
+.cards {
+    display: flex; /* Flexbox layout for cards */
+    flex-wrap: wrap; /* Allow cards to wrap */
+    justify-content: center; /* Center align cards */
+    gap: 20px; /* Add spacing between cards */
+    margin: 20px auto; /* Center the container and add spacing */
+    max-width: 1200px; /* Limit the maximum width */
+}
+
+/* Individual Card */
+.card {
+    background-color: white;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    text-align: center;
+}
+
+.card img {
+    max-width: 100%; /* Ensure the image fits within the card */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.card ul li {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Footer Section (Optional) */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #0099CC;
+    color: white;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-form input {
+        width: 90%; /* Full width on smaller screens */
+    }
+
+    .cards {
+        flex-direction: column; /* Stack cards vertically on small screens */
+        gap: 15px; /* Reduce gap */
+    }
+
+    .card {
+        width: 90%; /* Full width for cards on smaller screens */
+        margin: 0 auto; /* Center align cards */
+    }
+}
+
+
+
+/*fight sim form*/
+
+form {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Battle Results Section */
+.results {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.results h2 {
+    text-align: center;
+    color: #333;
+}
+
+.results ul {
+    list-style: none;
+    padding: 0;
+}
+
+.results ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.results p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.results .winner {
+    color: #28a745;
+}
+
+.results .loser {
+    color: #dc3545;
+}
+
+/* Buttons */
+.results .btn {
+    display: block;
+    width: 100px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.results .btn:hover {
+    background-color: #0056b3;
+}

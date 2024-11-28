@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Battle</title>
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav id="menu">
+        <ul>
+            <li><a href="{{ url_for('home_page') }}">Home</a></li>
+            <li><a href="{{ url_for('battle_simulator') }}">Fight</a></li>
+        </ul>
+    </nav>
+    <div class="Htitle">
+        <h1 class="title">SuperVS</h1>
+    </div>
+</header>
+
+
+<h1>Create Your Hero</h1>
+
+<form method="POST" action="{{ url_for('battle_Simulator') }}">
+    <label for="name">Hero Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="intelligence">Intelligence:</label>
+    <input type="number" id="intelligence" name="intelligence" min="0" max="100" value="0" oninput="updatePoints()" required>
+
+    <label for="strength">Strength:</label>
+    <input type="number" id="strength" name="strength" min="0" max="100" value="0" oninput="updatePoints()" required>
+
+    <label for="speed">Speed:</label>
+    <input type="number" id="speed" name="speed" min="0" max="100" value="0" oninput="updatePoints()" required>
+
+    <label for="durability">Durability:</label>
+    <input type="number" id="durability" name="durability" min="0" max="100" value="0" oninput="updatePoints()" required>
+
+    <label for="power">Power:</label>
+    <input type="number" id="power" name="power" min="0" max="100" value="0" oninput="updatePoints()" required>
+
+    <label for="combat">Combat:</label>
+    <input type="number" id="combat" name="combat" min="0" max="100" value="0" oninput="updatePoints()" required>
+
+    <div>
+        <p><strong>Points Used:</strong> <span id="used-points">0</span></p>
+        <p><strong>Points Remaining:</strong> <span id="remaining-points" style="color: green;">600</span></p>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
