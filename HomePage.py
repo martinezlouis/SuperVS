@@ -44,7 +44,7 @@ def home_page():
                 chart_paths.append(graph_stats("SuperVs", hero_name))
 
     # Pass chart_urls as a list of paths
-    return render_template("home.html", chart_urls=chart_paths, cards=cards)
+    return render_template("index.html", chart_urls=chart_paths, cards=cards)
 
 
 battle_sim = BattleSimulator("models/superhero_model.pkl")

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+    <title>SuperVS</title>
+    <!-- Link to the static CSS file -->
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav id="menu">
+        <ul>
+            <li><a href="{{ url_for('home_page') }}">Home</a></li>
+            <li><a href="{{ url_for('battle_simulator') }}">Fight</a></li>
+        </ul>
+    </nav>
+    <div class="Htitle">
+        <h1 class="title">SuperVS</h1>
+    </div>
+</header>
+
+
+<div class="search-form">
+    <form method="POST">
+        <input name="hero1_name" placeholder="Enter First Hero Name" required type="text">
+        <input name="hero2_name" placeholder="Enter Second Hero Name" required type="text">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+
+<div class="cards">
+    {% for card in cards %}
+    <div class="card carded container">
+        <div class="card-body cta">
+            {% if card.image %}
+            <img alt="{{ card.title }}" class="card-img-top" src="{{ card.image }}">
+            {% else %}
+            <p>No image available for {{ card.title }}</p>
+            {% endif %}
+            <div class="text">
+                <h2 class="card-title">{{ card.title }}</h2>
+                <p class="card-text">{{ card.text }}</p>
+                <ul>
+                    {% for attribute, values in card.attributes %}
+                    <li>{{ attribute }}: {{ values | sum }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>
